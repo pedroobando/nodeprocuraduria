@@ -1,0 +1,81 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="./styles/semantic.min.css" />
+    <link rel="stylesheet" href="./styles/style.css" />
+    <title>Procuraduria Edo. Anzoategui | REPORTE</title>
+  </head>
+  <body>
+    <div class="ui container" style="margin-top: 2rem">
+      <div class="ui segments raised">
+        <div class="ui segment primary">
+          <h1 class="ui blue header">
+            REPORTES DE PRESUPUESTOS
+            <div class="sub header">Emision de reportes del sistema de presupuesto</div>
+          </h1>
+        </div>
+
+        <div class="ui segment">
+          <form
+            class="ui form"
+            action="/api/presu/readdata"
+            enctype="application/x-www-form-urlencoded"
+            method="POST"
+            id="foxas"
+          >
+            <div class="field">
+              <label>INDIQUE EL AÑO DEL REPORTE</label>
+              <input type="number" name="year" placeholder="Indique el año" />
+            </div>
+            <div class="field">
+              <label>INDIQUE EL MES</label>
+              <select class="ui search dropdown" name="month">
+                <option value="">INDIQUE EL MES</option>
+                <option value="01">ENERO</option>
+                <option value="02">FEBRERO</option>
+                <option value="03">MARZO</option>
+                <option value="04">ABRIL</option>
+                <option value="05">MAYO</option>
+                <option value="06">JUNIO</option>
+                <option value="07">JULIO</option>
+                <option value="08">AGOSTO</option>
+                <option value="09">SEPTIEMBRE</option>
+                <option value="10">OCTUBRE</option>
+                <option value="11">NOVIEMBRE</option>
+                <option value="12">DICIEMBRE</option>
+              </select>
+            </div>
+            <button class="ui button green" type="submit" name="typereport" value="CACUMULADO">
+              CONSOLIDADO ACUMULADO
+            </button>
+            <button class="ui button teal" type="submit" name="typereport" value="CMENSUAL">
+              CONSOLIDADO MESUAL
+            </button>
+            <button
+              class="ui button yellow"
+              type="submit"
+              name="typereport"
+              value="REJECUCION"
+            >
+              RESUMEN EJECUCION
+            </button>
+            <div class="ui divider" style="margin-bottom: 2em"></div>
+            <div class="field">
+              <label>INDIQUE LA CUENTA PARA EL REPORTE DETALLADO</label>
+              <input type="text" name="cuenta" placeholder="4.02.03.00 ..." />
+            </div>
+            <button
+              class="ui button blue"
+              type="submit"
+              name="typereport"
+              value="DCOMPROMISOMENSUAL"
+            >
+              DETALLADO COMPROMETIDO MENSUAL
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

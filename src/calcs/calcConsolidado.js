@@ -13,9 +13,7 @@ const consolidado = ({
       MontoMod: 0,
       MontoModMes: 0,
     };
-    const theCtaComp = comprometido.find(
-      (ctafind) => ctafind.cuentaNo === ctaPresu.cuentaNo
-    ) || {
+    const theCtaComp = comprometido.find((ctafind) => ctafind.cuentaNo === ctaPresu.cuentaNo) || {
       cuentaNo: ctaPresu.cuentaNo,
       MontoComprometido: 0,
       MontoComprometidoMes: 0,
@@ -48,7 +46,8 @@ const consolidado = ({
         montoCau: theCtaCausa.MontoCausado,
         montoPagMes: theCtaPagado.MontoPagMes,
         montoPag: theCtaPagado.MontoPag,
-        montoDis: theCtaDisponible <= Math.pow(-0.01, 2) ? 0 : theCtaDisponible,
+        montoDis: theCtaDisponible,
+        // montoDis: theCtaDisponible <= Math.pow(-0.01, 2) ? 0 : theCtaDisponible,
       },
     ];
   });

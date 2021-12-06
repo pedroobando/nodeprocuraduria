@@ -164,6 +164,8 @@ const resumenEjecucion = async (req, res) => {
       pagado: dataPagado,
     });
 
+
+
     const fileName = "presupuesto.pdf";
     resumenEjecucionPDF(retConsolidado, `./public/${fileName}`, year, month);
     setTimeout(() => {

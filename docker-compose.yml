@@ -1,0 +1,41 @@
+version: '3'
+
+services:
+  api:
+    container_name: gqlcondominio
+    restart: always
+    build: .
+    ports:
+      - '5310:4000'
+    environment:
+      - PORT=4000
+      - MONGODB_URI=mongodb://172.26.238.1:27020
+      - DB_NAME=condominio
+    volumes:
+      - .:/app
+    depends_on:
+      - mongo_db
+    networks:
+      - inbackend
+
+  mongo_db:
+    container_name: dbcondominio
+    image: mongo:4.4-focal # nombre de la imagen
+    restart: always
+    ports:
+      - '27020:27017'
+    logging:
+      driver: none
+    volumes:
+      - ./mongo_data:/data/db
+    networks:
+      - inbackend
+
+networks:
+  inbackend:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.26.238.0/24
+          gateway: 172.26.238.1

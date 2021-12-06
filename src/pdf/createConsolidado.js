@@ -25,7 +25,7 @@ const createConsolidado = (cuenta, path, year, month) => {
   let doc = new PDFDocument({ size: "LEGAL", margin: 20, layout: "landscape" });
   LineaReport = 0;
 
-  const itemPerPage = 15;
+  const itemPerPage = 14;
   let totalPag = cuenta.length / itemPerPage;
   totalPag = totalPag % 2 > 0 ? totalPag + 1 : totalPag;
   totalPag -= totalPag % 2;
@@ -40,14 +40,12 @@ const createConsolidado = (cuenta, path, year, month) => {
       { year, month: monthToName[month], page, totalPag },
       "consolidado acumulado"
     );
-    generateHeaderTable(doc);
+    generateHeaderTableMes(doc, month);
     generateInvoiceTable(doc, paginate(nuevoDatos, itemPerPage, page));
     page += 1;
     if (page <= totalPag) doc.addPage({ size: "LEGAL", margin: 20, layout: "landscape" });
   } while (page <= totalPag);
-
   generateFooter(doc, LineaReport, cuentaTotal);
-
   doc.end();
   doc.pipe(fs.createWriteStream(path));
 };
@@ -56,7 +54,7 @@ const createConsolidadoMensual = (cuenta, path, year, month) => {
   let doc = new PDFDocument({ size: "LEGAL", margin: 20, layout: "landscape" });
   LineaReport = 0;
 
-  const itemPerPage = 15;
+  const itemPerPage = 14;
   let totalPag = cuenta.length / itemPerPage;
   totalPag = totalPag % 2 > 0 ? totalPag + 1 : totalPag;
   totalPag -= totalPag % 2;
@@ -96,8 +94,6 @@ const createDetalleCompromiso = (cuenta, path, year, month) => {
   totalPag = totalPag % 2 > 0 ? totalPag + 1 : totalPag;
   totalPag -= totalPag % 2;
 
-  // cuentaTotal = { ...cuenta[0] };
-  // const nuevoDatos = cuenta.filter((cta) => cta.cuentaNo !== "04.00.00.00.000");
   let page = 1;
 
   do {

@@ -366,8 +366,8 @@ const cuentaCompromisoDet = async (
   ).sort(ordenCuentaDesc);
 
   ctaAjustada = ctaAjustada.filter((ctad) => ctad.fatherId === cuentaDetalle);
-  console.log(cuentaDetalle);
-  console.log(ctaAjustada);
+  //console.log(cuentaDetalle);
+  //console.log(ctaAjustada);
 
   let ctaAjustadaII = [];
   // ctasPorAno.map((laCta) => {

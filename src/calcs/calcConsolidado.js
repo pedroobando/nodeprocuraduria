@@ -47,7 +47,7 @@ const consolidado = ({
         montoPagMes: theCtaPagado.MontoPagMes,
         montoPag: theCtaPagado.MontoPag,
         montoDis: theCtaDisponible,
-        // montoDis: theCtaDisponible <= Math.pow(-0.01, 2) ? 0 : theCtaDisponible,
+        //montoDis: theCtaDisponible <= Math.pow(-0.01, 2) ? 0 : theCtaDisponible,
       },
     ];
   });

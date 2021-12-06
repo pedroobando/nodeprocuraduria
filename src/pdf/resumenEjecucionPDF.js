@@ -35,6 +35,8 @@ const resumenEjecucionPDF = (cuenta, path, year, month) => {
   totalPag = totalPag % 2 > 0 ? totalPag + 1 : totalPag;
   totalPag -= totalPag % 2;
 
+  //cuenta.forEach(item=>console.log(item.montoAju, item.montoPag,item.montoAju-item.montoPag ))
+
   let page = 1;
 
   do {
@@ -89,11 +91,11 @@ const generateHeaderTable = (doc) => {
     .text("ASIGNACION ORIGINAL", 290, customerInformationTop, { width: 90, align: "center" })
     .text("MODIFICACIONES", 385, customerInformationTop, { width: 90, align: "center" })
     .text("ASIGNACION AJUSTADA", 475, customerInformationTop, { width: 90, align: "center" })
-    .text("PRESUPUESTO COMPROMETIDO", 560, customerInformationTop, {
+    .text("COMPROMETIDO", 560, customerInformationTop, {
       width: 90,
       align: "center",
     })
-    .text("PRESUPUESTO EJECUTADO", 640, customerInformationTop, { width: 90, align: "center" })
+    .text("CAUSADO", 640, customerInformationTop, { width: 90, align: "center" })
     .text("PAGADO", 720, customerInformationTop, { width: 90, align: "center" })
     .text("DISPONIBILIDAD PRESUPUESTARIA", 800, customerInformationTop, {
       width: 90,

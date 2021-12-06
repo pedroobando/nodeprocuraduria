@@ -120,15 +120,7 @@ function generateInvoiceTable(doc, invoice) {
   }
 
   const subtotalPosition = invoiceTableTop + (i + 1) * 30;
-  generateTableRow(
-    doc,
-    subtotalPosition,
-    "",
-    "",
-    "Subtotal",
-    "",
-    formatCurrency(invoice.subtotal)
-  );
+  generateTableRow(doc, subtotalPosition, "", "", "Subtotal", "", formatCurrency(invoice.subtotal));
 
   const paidToDatePosition = subtotalPosition + 20;
   generateTableRow(
@@ -156,12 +148,10 @@ function generateInvoiceTable(doc, invoice) {
 }
 
 function generateFooter(doc) {
-  doc
-    .fontSize(10)
-    .text("Payment is due within 15 days. Thank you for your business.", 50, 780, {
-      align: "center",
-      width: 500,
-    });
+  doc.fontSize(10).text("Payment is due within 15 days. Thank you for your business.", 50, 780, {
+    align: "center",
+    width: 500,
+  });
 }
 
 function generateTableRow(doc, y, item, description, unitCost, quantity, lineTotal) {
